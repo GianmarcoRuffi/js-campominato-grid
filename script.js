@@ -29,7 +29,7 @@ function createBoard() {
     grid.appendChild(square);
     squares.push(square);
 
-    // Click generico
+    // Click generico sui quadratini
 
     square.addEventListener("click", function (e) {
       click(square);
@@ -45,11 +45,27 @@ for (let i = 0; i < squares.length; i++) {
 
 // Verifica il livello di difficoltà selezionato dall'utente
 
-///// wip
+let e = document.getElementById("difficulty");
+
+let play = document.querySelector(".play");
 
 // Esegui funzione per creare la tabella
 
-createBoard();
+play.addEventListener("click", function () {
+  let value = e.options[e.selectedIndex].value;
+  let text = e.options[e.selectedIndex].text;
+  console.log(value + text);
+
+  if ((text = "medium")) {
+    let fields = 81;
+  } else if ((text = "hard")) {
+    let fields = 49;
+  } else {
+    let fields = 100;
+  }
+
+  createBoard();
+});
 
 // click sui quadrati
 
