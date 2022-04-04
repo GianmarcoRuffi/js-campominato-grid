@@ -52,5 +52,12 @@ createBoard();
 function click(square) {
   if (square.classList.contains("bomb")) {
     alert("Game Over!");
+  } else {
+    let total = square.getAttribute("data");
+    if (total != 0) {
+      square.addClassList.add("checked");
+      square.innerHtml = total;
+      return;
+    }
   }
 }

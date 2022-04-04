@@ -1,6 +1,6 @@
 .grid {
-  height: 400px;
-  width: 400px;
+  height: auto;
+  width: 420px;
   display: flex;
   flex-wrap: wrap;
   background-color: #7fffd4;
@@ -20,4 +20,8 @@ h2 {
 
 .bomb {
   background-color: red;
+}
+
+.checked {
+  background-color: #6495ed;
 }
