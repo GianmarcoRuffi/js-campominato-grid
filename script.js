@@ -19,9 +19,7 @@ function createBoard() {
   const emptyArray = Array(fields - bombAmount).fill("valid");
   const gameArray = emptyArray.concat(bombsArray);
   const shuffledArray = gameArray.sort(() => Math.random() - 0.5);
-  //
-  console.log(shuffledArray);
-  //
+
   for (let i = 0; i < fields; i++) {
     const square = document.createElement("div");
     square.setAttribute("id", i);
@@ -51,20 +49,12 @@ let play = document.querySelector(".play");
 
 // Esegui funzione per creare la tabella
 
+createBoard();
+
 play.addEventListener("click", function () {
   let value = e.options[e.selectedIndex].value;
   let text = e.options[e.selectedIndex].text;
-  console.log(value + text);
-
-  if ((text = "medium")) {
-    let fields = 81;
-  } else if ((text = "hard")) {
-    let fields = 49;
-  } else {
-    let fields = 100;
-  }
-
-  createBoard();
+  console.log(value + " " + text);
 });
 
 // click sui quadrati
