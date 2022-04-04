@@ -43,6 +43,10 @@ for (let i = 0; i < squares.length; i++) {
   squares[i].setAttribute("data", total);
 }
 
+// Verifica il livello di difficoltà selezionato dall'utente
+
+///// wip
+
 // Esegui funzione per creare la tabella
 
 createBoard();
