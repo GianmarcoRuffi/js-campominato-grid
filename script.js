@@ -17,20 +17,40 @@ function createBoard() {
   // Creazione di due array contenenti le bombe e le caselle vuote, ed unione dei due array tramite la funzione di concatenazione delle stringhe. Il totale andrà a formare il nostro campo di gioco.
   const bombsArray = Array(bombAmount).fill("bomb");
   const emptyArray = Array(width * width - bombAmount).fill("valid");
-  console.log(bombsArray);
-  console.log(emptyArray);
   const gameArray = emptyArray.concat(bombsArray);
-  console.log(gameArray);
   const shuffledArray = gameArray.sort(() => Math.random() - 0.5);
+  //
   console.log(shuffledArray);
+  //
   for (let i = 0; i < width * width; i++) {
     const square = document.createElement("div");
     square.setAttribute("id", i);
+    square.classList.add(shuffledArray[i]);
     grid.appendChild(square);
     squares.push(square);
+
+    // Click generico
+
+    square.addEventListener("click", function (e) {
+      click(square);
+    });
   }
+}
+
+// Aggiunta dei numeri
+
+for (let i = 0; i < squares.length; i++) {
+  squares[i].setAttribute("data", total);
 }
 
 // Esegui funzione per creare la tabella
 
 createBoard();
+
+// click sui quadrati
+
+function click(square) {
+  if (square.classList.contains("bomb")) {
+    alert("Game Over!");
+  }
+}
