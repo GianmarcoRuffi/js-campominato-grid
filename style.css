@@ -9,7 +9,7 @@
 .grid div {
   height: 40px;
   width: 40px;
-  border: 1px solid;
+  border: 1px solid black;
   cursor: pointer;
 }
 
@@ -20,8 +20,10 @@ h2 {
 
 .bomb {
   background-color: red;
+  color: gold;
 }
 
 .checked {
   background-color: #6495ed;
+  color: white;
 }

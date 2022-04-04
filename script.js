@@ -7,22 +7,22 @@ Quando l'utente clicca su ogni cella, la cella cliccata si colora di azzurro. */
 // Assegnazione variabili elementi e array
 
 const grid = document.querySelector(".grid");
-let width = 10;
 let bombAmount = 20;
 let squares = [];
+let fields = 100;
 
 // Creazione Tabella
 
 function createBoard() {
   // Creazione di due array contenenti le bombe e le caselle vuote, ed unione dei due array tramite la funzione di concatenazione delle stringhe. Il totale andrà a formare il nostro campo di gioco.
   const bombsArray = Array(bombAmount).fill("bomb");
-  const emptyArray = Array(width * width - bombAmount).fill("valid");
+  const emptyArray = Array(fields - bombAmount).fill("valid");
   const gameArray = emptyArray.concat(bombsArray);
   const shuffledArray = gameArray.sort(() => Math.random() - 0.5);
   //
   console.log(shuffledArray);
   //
-  for (let i = 0; i < width * width; i++) {
+  for (let i = 0; i < fields; i++) {
     const square = document.createElement("div");
     square.setAttribute("id", i);
     square.classList.add(shuffledArray[i]);
