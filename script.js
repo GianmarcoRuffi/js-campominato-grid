@@ -55,7 +55,7 @@ function click(square) {
   } else {
     let total = square.getAttribute("data");
     if (total != 0) {
-      square.addClassList.add("checked");
+      square.classList.add("checked");
       square.innerHtml = total;
       return;
     }
