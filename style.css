@@ -72,7 +72,7 @@ h2 {
   color: black;
 }
 
-.bomb {
+.bomb-checked {
   background-color: red;
   color: gold;
 }

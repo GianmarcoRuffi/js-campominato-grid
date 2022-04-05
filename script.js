@@ -7,7 +7,7 @@ Quando l'utente clicca su ogni cella, la cella cliccata si colora di azzurro. */
 // Assegnazione variabili elementi e array
 
 const grid = document.querySelector(".grid");
-let bombAmount = 20;
+let bombAmount = 16;
 let squares = [];
 let fields = 100;
 
@@ -43,24 +43,39 @@ for (let i = 0; i < squares.length; i++) {
 
 // Verifica il livello di difficoltà selezionato dall'utente
 
-let e = document.getElementById("difficulty");
+let difficulty = document.getElementById("difficulty");
 
 let play = document.querySelector(".play");
 
 // Esegui funzione per creare la tabella
 
-createBoard();
-
 play.addEventListener("click", function () {
-  let value = e.options[e.selectedIndex].value;
-  let text = e.options[e.selectedIndex].text;
+  let value = difficulty.options[difficulty.selectedIndex].value;
+  let text = difficulty.options[difficulty.selectedIndex].text;
   console.log(value + " " + text);
+  let fields;
+  switch (value) {
+    case "1":
+    default:
+      fields = 100;
+      break;
+
+    case "2":
+      fields = 81;
+      break;
+
+    case "3":
+      fields = 49;
+      break;
+  }
+  createBoard(fields);
 });
 
 // click sui quadrati
 
 function click(square) {
   if (square.classList.contains("bomb")) {
+    square.classList.add("bomb-checked");
     alert("Game Over!");
   } else {
     let total = square.getAttribute("data");
