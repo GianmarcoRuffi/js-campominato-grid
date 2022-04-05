@@ -77,12 +77,12 @@ h2 {
   color: gold;
 }
 
-.bomb {
-  background-color: red;
-  color: gold;
-}
-
 .checked {
   background-color: #6495ed;
   color: white;
+}
+
+.bomb {
+  background-color: red;
+  color: gold;
 }

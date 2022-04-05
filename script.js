@@ -9,13 +9,14 @@ Quando l'utente clicca su ogni cella, la cella cliccata si colora di azzurro. */
 const grid = document.querySelector(".grid");
 let bombAmount = 16;
 let squares = [];
-let fields = 100;
 let maxAttempt;
 let attempts = 0;
 
 // Creazione Tabella
 
-function createBoard() {
+function createBoard(fields) {
+  grid.innerHTML = "";
+
   // Creazione di due array contenenti le bombe e le caselle vuote, ed unione dei due array tramite la funzione di concatenazione delle stringhe. Il totale andrà a formare il nostro campo di gioco.
   const bombsArray = Array(bombAmount).fill("bomb");
   const emptyArray = Array(fields - bombAmount).fill("valid");
@@ -25,6 +26,7 @@ function createBoard() {
 
   for (let i = 0; i < fields; i++) {
     const square = document.createElement("div");
+    square.innerText = i + 1;
     square.setAttribute("id", i);
     square.classList.add(shuffledArray[i]);
     grid.appendChild(square);
@@ -70,6 +72,10 @@ play.addEventListener("click", function () {
     case "3":
       fields = 49;
       break;
+
+    case "4":
+      fields = 30;
+      break;
   }
   createBoard(fields);
 });
@@ -77,6 +83,7 @@ play.addEventListener("click", function () {
 // click sui quadrati
 
 function click(square) {
+  console.log(square.id);
   attempts++;
   console.log(attempts);
   console.log(maxAttempt);
@@ -84,7 +91,10 @@ function click(square) {
     square.classList.add("bomb-checked");
     alert("Game Over!");
   } else if (attempts === maxAttempt) {
-    alert("Game Over!");
+    square.classList.add("checked");
+    square.innerHtml = total;
+    alert("Perfect");
+    return;
   } else {
     let total = square.getAttribute("data");
     if (total != 0) {
