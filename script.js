@@ -10,6 +10,8 @@ const grid = document.querySelector(".grid");
 let bombAmount = 16;
 let squares = [];
 let fields = 100;
+let maxAttempt;
+let attempts = 0;
 
 // Creazione Tabella
 
@@ -19,6 +21,7 @@ function createBoard() {
   const emptyArray = Array(fields - bombAmount).fill("valid");
   const gameArray = emptyArray.concat(bombsArray);
   const shuffledArray = gameArray.sort(() => Math.random() - 0.5);
+  maxAttempt = fields - bombAmount;
 
   for (let i = 0; i < fields; i++) {
     const square = document.createElement("div");
@@ -74,8 +77,13 @@ play.addEventListener("click", function () {
 // click sui quadrati
 
 function click(square) {
+  attempts++;
+  console.log(attempts);
+  console.log(maxAttempt);
   if (square.classList.contains("bomb")) {
     square.classList.add("bomb-checked");
+    alert("Game Over!");
+  } else if (attempts === maxAttempt) {
     alert("Game Over!");
   } else {
     let total = square.getAttribute("data");
